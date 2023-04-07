@@ -1,0 +1,43 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>name.guai.macrophage</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Macrophage</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor>guai</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description>Applies a macro to all the search results</description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="214.0"/>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+<!--    <depends>com.intellij.modules.platform</depends>-->
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+
+    </extensions>
+
+    <actions>
+        <action id="name.guai.macrophage.GotoNextUsageAction" class="name.guai.macrophage.GotoNextUsageAction"
+                text="Goto Next Usage" description="Goto next Usage">
+            <add-to-group group-id="FindMenuGroup" anchor="after" relative-to-action="UnselectPreviousOccurrence"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl F3"/>
+        </action>
+        <action id="name.guai.macrophage.MacrophageAction" class="name.guai.macrophage.MacrophageAction"
+                text="Macrophage" description="Play macro as many times as there are Usages">
+            <add-to-group group-id="Macros" anchor="after" relative-to-action="StandardMacroActions"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt F3"/>
+        </action>
+    </actions>
+</idea-plugin>
